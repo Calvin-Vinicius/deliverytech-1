@@ -19,6 +19,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
+
 @Entity
 @Table(name = "clientes")
 public class Cliente {
