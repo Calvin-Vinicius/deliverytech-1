@@ -31,6 +31,7 @@ public class ItemPedido {
     
     private BigDecimal subtotal;
 
+
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="produto_id")
     private Produto produto;

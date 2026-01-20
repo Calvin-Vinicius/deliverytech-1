@@ -28,7 +28,7 @@ public class Cliente {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String nome;
+    private String nome; 
 
     @Column(unique= true, nullable = false)
     private String email;
@@ -40,7 +40,7 @@ public class Cliente {
     @Column(name = "data_cadastro")
     private LocalDateTime dataCadastro;
 
-    private boolean ativo;
+    private boolean ativo;  
 
     @OneToMany(mappedBy="clientes")
     private List<Pedido> pedidos = new ArrayList<>();
