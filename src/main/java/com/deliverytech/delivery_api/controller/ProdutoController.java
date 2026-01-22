@@ -22,6 +22,11 @@ public class ProdutoController {
         this.produtoService = produtoService;
     }
 
+    @GetMapping("/{id}")
+    public Produto buscarPorId(@PathVariable Long id) {
+        return produtoService.buscarPorId(id);
+    }
+
     @PostMapping("/{restauranteId}")
     public ResponseEntity<Produto> cadastrar(@PathVariable Long restauranteId, @RequestBody Produto produto){
         return ResponseEntity.status(201).body(produtoService.cadastrar(restauranteId, produto));

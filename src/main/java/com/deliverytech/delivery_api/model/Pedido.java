@@ -52,10 +52,12 @@ public class Pedido {
     @Enumerated(EnumType.STRING)
     private StatusPedidos status;
 
+    @JsonIgnore
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="cliente_id")
     private Cliente cliente;
 
+    @JsonIgnore
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="restaurante_id")
     private Restaurante restaurante;
