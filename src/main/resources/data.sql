@@ -4,31 +4,52 @@ INSERT INTO clientes (nome, email, telefone, endereco, data_cadastro, ativo) VAL
 ('Pedro Oliveira', 'pedro@email.com', '(11) 99999-3333', 'Rua C, 789 - São Paulo/SP', CURRENT_TIMESTAMP, true);
 
 
-INSERT INTO restaurantes (nome, categoria, endereco, telefone, taxa_entrega, avaliacao, ativo) VALUES
+INSERT INTO restaurantes (nome, categoria, endereco, telefone, taxa_entrega, avaliacao,  ativo) VALUES
 ('Pizzaria Bella', 'Italiana', 'Av. Paulista, 1000 - São Paulo/SP', '(11) 3333-1111', 5.00, 4.5, true),
 ('Burger House', 'Hamburgueria', 'Rua Augusta, 500 - São Paulo/SP', '(11) 3333-2222', 3.50, 4.2, true),
 ('Sushi Master', 'Japonesa', 'Rua Liberdade, 200 - São Paulo/SP', '(11) 3333-3333', 8.00, 4.8, true);
 
 
-INSERT INTO produtos (id, nome, descricao, preco, categoria, disponivel, restaurante_id) VALUES
-(1, 'Pizza Margherita', 'Molho de tomate, mussarela e manjericão', 35.90, 'Pizza', true, 1),
-(2, 'Pizza Calabresa', 'Molho de tomate, mussarela e calabresa', 38.90, 'Pizza', true, 1),
-(3, 'Lasanha Bolonhesa', 'Lasanha tradicional com molho bolonhesa', 28.90, 'Massa', true, 1),
+INSERT INTO produtos (
+    id,
+    nome,
+    descricao,
+    categoria,
+    preco,
+    disponivel,
+    restaurante_id
+) VALUES
+(1, 'Pizza Margherita', 'Molho de tomate, mussarela e manjericão', 'Pizza', 35.90, true, 1),
+(2, 'Pizza Calabresa', 'Molho de tomate, mussarela e calabresa', 'Pizza', 38.90, true, 1),
+(3, 'Lasanha Bolonhesa', 'Lasanha tradicional com molho bolonhesa', 'Massa', 28.90, true, 1),
 
-(4, 'X-Burger', 'Hambúrguer, queijo, alface e tomate', 18.90, 'Hambúrguer', true, 2),
-(5, 'X-Bacon', 'Hambúrguer, queijo, bacon, alface e tomate', 22.90, 'Hambúrguer', true, 2),
+(4, 'X-Burger', 'Hambúrguer, queijo, alface e tomate', 'Hambúrguer', 18.90, true, 2),
+(5, 'X-Bacon', 'Hambúrguer, queijo, bacon, alface e tomate', 'Hambúrguer', 22.90, true, 2),
 
-(6, 'Batata Frita', 'Porção de batata frita crocante', 12.90, 'Acompanhamento', true, 2),
+(6, 'Batata Frita', 'Porção de batata frita crocante', 'Acompanhamento', 12.90, true, 2),
 
-(7, 'Combo Sashimi', '15 peças de sashimi variado', 45.90, 'Sashimi', true, 3),
-(8, 'Hot Roll Salmão', '8 peças de hot roll de salmão', 32.90, 'Hot Roll', true, 3);
+(7, 'Combo Sashimi', '15 peças de sashimi variado', 'Sashimi', 45.90, true, 3),
+(8, 'Hot Roll Salmão', '8 peças de hot roll de salmão', 'Hot Roll', 32.90, true, 3);
 
 
+INSERT INTO pedidos (
+    id,
+    data_pedido,
+    endereco_entrega,
+    numero_pedido,
+    taxa_entrega,
+    valor_total,
+    status,
+    cliente_id,
+    restaurante_id
+) VALUES
+(1, CURRENT_TIMESTAMP, 'Rua A, 123', 'PED1234567890', 5.00, 64.80, 'PENDENTE', 1, 1),
 
-INSERT INTO pedidos (id, numero_pedido, data_pedido, status, valor_total, observacoes, cliente_id, restaurante_id) VALUES
-(1, 'PED1234567890', CURRENT_TIMESTAMP, 'PENDENTE', 64.80, 'Sem cebola na pizza', 1, 1),
-(2, 'PED1234567891', CURRENT_TIMESTAMP, 'CONFIRMADO', 41.80, '', 2, 2),
-(3, 'PED1234567892', CURRENT_TIMESTAMP, 'ENTREGUE', 78.80, 'Wasabi à parte', 3, 3);
+(2, CURRENT_TIMESTAMP, 'Rua B, 456', 'PED1234567891', 7.00, 41.80, 'CONFIRMADO', 2, 2),
+
+(3, CURRENT_TIMESTAMP, 'Rua C, 789', 'PED1234567892', 6.00, 78.80, 'ENTREGUE', 3, 3);
+
+
 
 
 INSERT INTO itens_pedido (quantidade, preco_unitario, subtotal, pedido_id, produto_id) VALUES

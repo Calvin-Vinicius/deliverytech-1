@@ -28,7 +28,7 @@ public class RestauranteController {
         return ResponseEntity.status(201).body(service.cadastrar(dados));
     }
 
-    @GetMapping
+    @GetMapping("/listar")
     public List<Restaurante> listar(){
         return service.listarAtivos();
     }
