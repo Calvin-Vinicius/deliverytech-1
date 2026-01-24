@@ -62,13 +62,13 @@ public class DataLoader {
             r1.setAtivo(true);
 
             Restaurante r2 = new Restaurante();
-            r1.setNome("Burger House");
-            r1.setCategoria("Hamburgueria");
-            r1.setEndereco("Rua Augusta, 500 - São Paulo/SP");
-            r1.setTelefone("11999998888");
-            r1.setAvaliacao(new BigDecimal("4.0"));
-            r1.setTaxaEntrega(new BigDecimal("8.00"));
-            r1.setAtivo(true);
+            r2.setNome("Burger House");
+            r2.setCategoria("Hamburgueria");
+            r2.setEndereco("Rua Augusta, 500 - São Paulo/SP");
+            r2.setTelefone("11999998888");
+            r2.setAvaliacao(new BigDecimal("4.0"));
+            r2.setTaxaEntrega(new BigDecimal("8.00"));
+            r2.setAtivo(true);
 
             List<Restaurante> restaurantes = new ArrayList<>();
             restaurantes.add(r1);
