@@ -27,16 +27,26 @@ public interface PedidoRepository extends JpaRepository<Pedido, Long> {
         @Param("fim") LocalDateTime fim
     );
 
-    @Query("""
-            select com.deliverytech.delivery_api.dto.TotalVendasPorRestauranteDTO(
-            r.NOME,
-            coalesce(sum(ip.SUBTOTAL), 0) as total_por_restaurante
-            )
-            from RESTAURANTES r
-            join PEDIDOS p on p.RESTAURANTE_ID = r.ID 
-            join ITENS_PEDIDO ip on ip.PEDIDO_ID = p.ID
-            group by r.NOME;
-        """)
-        List<TotalVendasPorRestauranteDTO> totalVendasPorRestaurante();
+
+        @Query("""
+            select new com.deliverytech.delivery_api.dto.TotalVendasPorRestauranteDTO(
+                    r.nome,
+                    coalesce(sum(ip.subtotal), 0)
+                )
+                from Pedido p
+                join p.restaurante r
+                join p.itens ip
+                group by r.nome
+            """)
+            List<TotalVendasPorRestauranteDTO> totalVendasPorRestaurante();
+
+            @Query(value="""
+                        SELECT c.nome AS cliente, COUNT(p.id) AS total_pedidos
+                        FROM pedidos p 
+                        JOIN clientes c ON c.id = p.cliente_id
+                        GROUP BY c.nome
+                        ORDER BY total_pedidos DESC
+                """, nativeQuery = true )
+            List<Object[]> rankingClientes();
     
 }

@@ -12,11 +12,14 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class RelatorioService {
-    private final PedidoRepository respository;
+    private final PedidoRepository repository;
     
     public List<TotalVendasPorRestauranteDTO> totalVendasPorRestaurante(){
-        return respository.totalVendasPorRestaurante();
+        return repository.totalVendasPorRestaurante();
     }  
 
+    public List<Object[]> rankingClientes(){
+        return repository.rankingClientes();
+    }
 
 }
